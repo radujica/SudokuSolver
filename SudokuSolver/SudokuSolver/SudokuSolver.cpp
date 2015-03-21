@@ -8,7 +8,7 @@ using namespace std;
 
 const short N = 9;		//number of distinct digits in the grid; implicitly, size of the grid
 const short M = 3;		//height/width of box, i.e. N/3
-const short EMPTY = 0;	//digit referring to an empty spot, i.e. no digit
+const short EMPTY = 0;		//digit referring to an empty spot, i.e. no digit
 
 bool solveSudoku(short grid[N][N]);
 void printGrid(short grid[N][N]);
@@ -33,7 +33,6 @@ bool findUnassignedField(short grid[N][N], short &i, short &j)
 	return false;
 }
 
-//TODO: change to short; efficient-ize
 /*
 	Returns true if num can be placed in that spot
 */
@@ -115,20 +114,20 @@ void printGrid(short grid[N][N]) {
 int main()
 {
 	clock_t startTime = clock();
-	short grid[N][N] = {{5,3,0,0,7,0,0,0,0},		
-                      {6,0,0,1,9,5,0,0,0},		
-                      {0,9,8,0,0,0,0,6,0},		
-                      {8,0,0,0,6,0,0,0,3},
-					  {4,0,0,8,0,3,0,0,1},
-					  {7,0,0,0,2,0,0,0,6},
-					  {0,6,0,0,0,0,2,8,0},
-					  {0,0,0,4,1,9,0,0,5},
-					  {0,0,0,0,8,0,0,7,9}};	
+	short grid[N][N] = 	{{5,3,0,0,7,0,0,0,0},		
+                	 	{6,0,0,1,9,5,0,0,0},		
+                	 	{0,9,8,0,0,0,0,6,0},		
+                	 	{8,0,0,0,6,0,0,0,3},
+				{4,0,0,8,0,3,0,0,1},
+				{7,0,0,0,2,0,0,0,6},
+				{0,6,0,0,0,0,2,8,0},
+				{0,0,0,4,1,9,0,0,5},
+				{0,0,0,0,8,0,0,7,9}};	
 
 	//int * arrayPointer = &grid[N][N];
 
-    if (solveSudoku(grid) == true) printGrid(grid);
-    else cout<<"No solution exists"<<endl;
+    	if (solveSudoku(grid) == true) printGrid(grid);
+    	else cout<<"No solution exists"<<endl;
 
 	cout<<"Time taken: "<<setprecision(7)<<(double)(clock() - startTime)/CLOCKS_PER_SEC<<'s'<<endl;
 
