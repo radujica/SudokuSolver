@@ -1,9 +1,3 @@
-/*
-	TODO: 
-		1) Make it more efficient, e.g. change logic in 'findUnassignedField' and use pointers
-		2) Make it more OO, i.e. make Grid and Field classes
-*/
-
 #include <iostream>
 
 //for efficiency checking
@@ -14,7 +8,7 @@ using namespace std;
 
 const short N = 9;		//number of distinct digits in the grid; implicitly, size of the grid
 const short M = 3;		//height/width of box, i.e. N/3, where 3 is the number of boxes you can fit horizontally next to each other
-const short EMPTY = 0;	//digit referring to an empty spot, i.e. no digit
+const short EMPTY = 0;		//digit referring to an empty spot, i.e. no digit
 
 bool solveSudoku(short grid[N][N]);
 void printGrid(short grid[N][N]);
@@ -91,9 +85,9 @@ bool solveSudoku(short grid[N][N]) {
 	//loop through all possible choices, i.e. 1..N
 	for (short num = 1; num <=N; num++) {
 		if (isValidChoice(grid, i, j, num)) {
-			grid[i][j] = num;		//assign number
-			if (solveSudoku(grid)) return true;
-			grid[i][j] = EMPTY;		//
+			grid[i][j] = num;	
+			if (solveSudoku(grid)) return true;	//solveSudoku given grid with a new number added
+			grid[i][j] = EMPTY;	
 		}
 	}
 	return false;	//no valid choice, trigger backtracking
@@ -106,24 +100,30 @@ void printGrid(short grid[N][N]) {
 	for (short i=0;i<N;i++) {
 		for (short j=0;j<N;j++) {
 			cout << grid[i][j] << ' ';
-			//TODO: make it a for loop
-			if (j == 2 || j == 5 || j == 8) cout<<' ';
+			//to add spaces between boxes horizontally
+			for (short z=M-1;z<N;z+=M) {
+				if (z == j) cout<<' ';	
+			}
 		}
 		cout<<endl;
+		//to add spaces between boxes vertically
+		for (short z=M-1;z<N;z+=M) {
+			if (z == i) cout<<endl;	
+		}
 	}
 }
 
 int main() {
 	clock_t startTime = clock();
 	short grid[N][N] = {{5,3,0,0,7,0,0,0,0},		
-                      {6,0,0,1,9,5,0,0,0},		
-                      {0,9,8,0,0,0,0,6,0},		
-                      {8,0,0,0,6,0,0,0,3},
-					  {4,0,0,8,0,3,0,0,1},
-					  {7,0,0,0,2,0,0,0,6},
-					  {0,6,0,0,0,0,2,8,0},
-					  {0,0,0,4,1,9,0,0,5},
-					  {0,0,0,0,8,0,0,7,9}};	
+                        {6,0,0,1,9,5,0,0,0},		
+                        {0,9,8,0,0,0,0,6,0},		
+                        {8,0,0,0,6,0,0,0,3},
+			{4,0,0,8,0,3,0,0,1},
+			{7,0,0,0,2,0,0,0,6},
+			{0,6,0,0,0,0,2,8,0},
+			{0,0,0,4,1,9,0,0,5},
+			{0,0,0,0,8,0,0,7,9}};	
 
     if (solveSudoku(grid) == true) printGrid(grid);
     else cout<<"No solution exists"<<endl;
