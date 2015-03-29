@@ -100,7 +100,6 @@ bool checkForValueVertical(short grid[N][N], short j, short num) {
 
 /*
 	Returns true if num is found in the square.
-	NOTE: Currently checks for N/3 squares
 */
 bool checkForValueSquare(short grid[N][N], short i, short j, short num) {
 	for (short a=0;a<M;a++) {
@@ -124,9 +123,9 @@ bool solveSudoku(short grid[N][N]) {
 	//loop through all possible choices, i.e. 1..N
 	for (short num = 1; num <=N; num++) {
 		if (isValidChoice(grid, i, j, num)) {
-			grid[i][j] = num;		//assign number
-			if (solveSudoku(grid)) return true;
-			grid[i][j] = EMPTY;		//
+			grid[i][j] = num;		
+			if (solveSudoku(grid)) return true;	//solveSudoku for the grid with the added num
+			grid[i][j] = EMPTY;		
 		}
 	}
 	return false;	//no valid choice, trigger backtracking
