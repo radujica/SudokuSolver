@@ -7,6 +7,9 @@ v1.1: Human-like algorithm
 
 ###Future Versions
 
-Graphics, i.e. for input, such that the user can click/type initial sudoku grid easily.
-- Perhaps HTML 'form' with php backend
+Graphics, i.e. for input, such that the user can click/type initial sudoku grid easily. Some possibilities are:
+- C++ graphics library, such as Cinder
+- HTML 'form' with php backend
 - Javascript on the website
+- Smartphone apps (iOS - Swift, or Android - Java)
+- Solve from camera/picture: MATLAB
