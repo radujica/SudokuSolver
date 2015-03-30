@@ -13,6 +13,7 @@ const short EMPTY = 0;		//digit referring to an empty spot, i.e. no digit
 bool solveSudoku(short grid[N][N]);
 void printGrid(short grid[N][N]);
 bool findUnassignedField(short grid[N][N], short &i, short &j);
+bool findMostConstrainedField(short grid[N][N], short &i, short &j);
 bool isValidChoice(short grid[N][N], short i, short j, short num);
 bool checkForValueHorizontal(short grid[N][N], short i, short num);
 bool checkForValueVertical(short grid[N][N], short j, short num);
