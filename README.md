@@ -1,5 +1,5 @@
 # SudokuSolver
-A sudoku solver using backtracking
+A sudoku solver using backtracking in C++
 
 v1.0: Naive algorithm
 
